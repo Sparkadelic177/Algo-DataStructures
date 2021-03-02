@@ -26,29 +26,33 @@ const swapp = (arr, index1, index2) => {
 };
 
 function bubbleSort(arr) {
-  for (let i = 0; index < arr.length; i++) {
-    for (let j = 0; index < i - 1; j++) {
-      if (arr[j] > ar[j + 1]) {
+  for (let i = arr.length; i > 0; i--) {
+    for (let j = 0; j < i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
         swap(arr, j, j + 1);
       }
     }
   }
+  return arr;
 }
 
 //bubble sort optimizations - by sort circuit with flag
 //Time complexity is n^2, but with optimazation it can be linear best case if its nearly sorted
-function bubbleSort(arr) {
+function bubbleSort2(arr) {
   let noSwaps = true;
-  for (let i = 0; index < arr.length; i++) {
-    for (let j = 0; index < i - 1; j++) {
-      if (arr[j] > ar[j + 1]) {
+  for (let i = arr.length; i > 0; i--) {
+    for (let j = 0; j < i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
         swap(arr, j, j + 1);
         noSwaps = false;
       }
     }
     if (noSwaps) break;
   }
+  return arr;
 }
+
+// console.log(bubbleSort2([23,45,2,134,22,1,10]))
 
 //Selection sort. Similar to bubble sort, but instead of first placing large values into sorted positions, it places small values
 //into sorted positions
@@ -58,3 +62,23 @@ function bubbleSort(arr) {
 //Compare this item to the next item in the array until you find a smaller number
 //If a smaller number is found, designate that smaller number to be the new "minimum" and continue until the end of the array
 //If the "mimimum" is not the value (index) you initially began with, swap the two values
+function selectionSort(array) {
+  if (!array || array.length === 1) return array;
+  for (let i = 0; i < array.length; i++) {
+    let index = i;
+    let min = array[i];
+    for (let j = i + 1; j < array.length; j++) {
+      let currentNum = array[j];
+      if (min > currentNum) {
+        min = currentNum;
+        index = j;
+      }
+    }
+    if (index !== i) {
+      swap(array, i, index);
+    }
+  }
+  return array;
+}
+
+console.log(selectionSort([32, 3, 14, 63, 12, 33]));
