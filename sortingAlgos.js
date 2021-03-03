@@ -160,7 +160,8 @@ const mergeSort = (arr1, arr2) => {
 //MergeSort PPseudocode full implementation
 //Break up the array into halves untill you have arrays that are empty or have one element 
 //Once you have smaller sorted arrays, merge those arrays with other sorted arrays untill you are back at the full length of the array
-//once the array has been merged back together, return the merged (and sorted !) array
+//once the array has been merged back together, return the merged (and sorted !) array 
+// Time complexity - O(n log n)
 
 const merge = (arr) => {
     if(arr.length === 1) return arr;
